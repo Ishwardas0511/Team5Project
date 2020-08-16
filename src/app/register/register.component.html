@@ -1,0 +1,83 @@
+
+<table align="center">
+    <tr>
+        <td>
+            <label>First Name</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" [(ngModel)]="register.Firstname" #fname="ngModel" />
+        </td>
+    </tr>
+    <tr>
+        <tr>
+            <td>
+                <label>Middle Name</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" [(ngModel)]="register.Middlename"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Last Name </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" [(ngModel)]="register.LastName"  #mobile="ngModel"/>
+            </td>         
+        </tr>
+        <tr>
+        <td>
+            <label>Password</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" [(ngModel)]="register.pass"  #pass="ngModel" />
+        </td>
+       
+    </tr>
+    <tr>
+        <td>
+            <label>Email Address</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" [(ngModel)]="register.EmailId" #email="ngModel" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label>Mobile No.</label>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" [(ngModel)]="register.Mobile" #mobile="ngModel"   />
+        </td>
+    </tr>
+    <tr>
+        <tr>
+            <td>
+                <label>Date of Birth</label>
+            </td>
+        </tr>
+        <tr>
+          <td>
+                <input type="date" [(ngModel)]="register.DOB" />
+         </td>     
+        </tr>
+        <tr>
+            <button (click)="submit()">Submit</button>
+        </tr>
+    </table>
+    
+    <p>
+        {{result}}
+    </p>

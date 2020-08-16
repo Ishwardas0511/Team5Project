@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ApplicationFormVehicleLoan"
+    }
+  },
+  "defaultProject": "ApplicationFormVehicleLoan",
+  "cli": {
+    "analytics": "61748646-fe37-4a6a-ac6f-896e5c2283a8"
+  }
 }

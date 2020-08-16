@@ -1,0 +1,38 @@
+<p>login works!</p>
+<form name="frmLogin">
+    <table align="center">
+        <tr>
+            <td>
+                <label>Username</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text"  [(ngModel)]="log.EmailId" class="form-control" name="email" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" [(ngModel)]="log.Pass" class="form-control" name="pass" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button (click)="login()" >Login</button>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button (click)="newUser()">If You Are New User</button>
+                    </td>
+                </tr>
+                <p>
+                    {{result}}
+                </p>
+
+               
