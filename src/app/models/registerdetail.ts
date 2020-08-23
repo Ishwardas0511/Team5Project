@@ -7,5 +7,5 @@ export class RegisterModel{
     DOB:Date;
     pass:string;
     admin_login_id :string;
-    
+    security_Que:string;
 }

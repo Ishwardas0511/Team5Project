@@ -21,7 +21,6 @@ export class GeteligibilityComponent implements OnInit {
   brands: Brand[];
   models: Model[];
   employementdetail:EmploymentDetail;
-vehicledetail:VehicleDetails;
 loandetail:LoanDetail;
  
 
@@ -34,10 +33,12 @@ loandetail:LoanDetail;
   eligibleMsg : string;
   showbutton : boolean;
   eligibleLoanAmt : string;
-
+userid:any;
+error:Number;
   
 
   constructor(private datePipe: DatePipe,private routes:Router,private dataservice:DataService,private selectservice:SelectService) { 
+    this.userid=this.dataservice.getuserid();
     this.eligible = new Eligibilty();
     this.vdetails = new VehicleDetails();
     this.employementdetail=new EmploymentDetail();
@@ -48,6 +49,7 @@ loandetail:LoanDetail;
     this.employementdetail.other_income='0';
     this.brands=[];
     this.models=[];
+    
   }
 
   ngOnInit(): void {
@@ -77,18 +79,32 @@ loandetail:LoanDetail;
     }
     else
     {
-      this.eligibleMsg = "Sorry you are not eligible for Loan :(";
+      this.eligibleMsg = "Sorry you are not eligible for Loan :( your age should  be greater then 21 and your yearly salary should be greater 4Lac";
     }
    
   }
   proceed()
   {
+    if(this.vdetails.Ex_showroom_price!=null&&this.vdetails.car_make!=null&&
+      this.vdetails.car_model!=null&&this.vdetails.onroad_price!=null &&this.employementdetail.emp_type!=null&&this.employementdetail.other_income!=null&&this.employementdetail.yearly_salary!=null)
+      {
+    this.error=200;
+    console.log(this.vdetails.car_make)
     this.dataservice.set_empdetails(this.employementdetail);
-this.dataservice.setoption(this.eligibleLoanAmt);
-this.routes.navigate(['/loanoffer'])
-  }
+    this.dataservice.setoption(this.eligibleLoanAmt);
+    this.dataservice.set_vehicaldetail(this.vdetails);
+    this.routes.navigate(['/loanoffer'])
+      }
+else{
+  this.error=400;
+}
+}
   onSelect(brandid) {
+    this.vdetails.car_make=this.brands.find((c)=>c.id==brandid).name;
     this.models = this.selectservice.getStates().filter((item) => item.brandid == brandid);
   }
-
+logout()
+{
+  this.routes.navigate(['/login'])
+}
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from '../services/applicationservice';
 import{Router} from '@angular/router';
 import{Login} from '../models/login';
+import { DataService } from '../services/dataservice';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,24 +10,32 @@ import{Login} from '../models/login';
 })
 export class LoginComponent implements OnInit {
 log:Login;
-result;
+result
+userid:any;
 logedin:boolean;
-  constructor(private service:ApplicationService,private routs:Router) { 
+wronguser:Boolean;
+PersonalDetailFromDataBase;
+value:number;
+logd:number;
+
+  constructor(private service:ApplicationService,private routs:Router,private dataservice:DataService) { 
     this.log=new Login();
+    this.logedin=true;
+ 
   }
 
   ngOnInit(): void {
-    console.log("hyye")
+    
   }
 login()
 {
-  this.logedin=true;
-this.service.login(this.log).subscribe(data=>this.result=data);
-
-
-}
-newUser()
+ 
+this.service.login(this.log).subscribe(data=>{this.result=data;this.dataservice.setuserid(this.result);this.value=this.result;if(this.value!=0)
 {
-this.routs.navigate(['/register'])
+    
+ this.routs.navigate(['/userdashboard'])
+}
+ })
+
 }
 }

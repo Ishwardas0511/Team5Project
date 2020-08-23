@@ -36,6 +36,8 @@
   .container {
     display: table;
     width: 100%;
+    position: fixed;
+    top: 500px;
   }
   
   .left-half {
@@ -52,3 +54,8 @@
     right: 0px;
     width: 50%;
   }
+  h2 {text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 100px;
+    color: black;
+}

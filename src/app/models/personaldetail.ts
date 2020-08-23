@@ -2,7 +2,7 @@ export class PersonalDetails{
     user_id : number;
     f_name : string;
     m_name : string;
-    l_name : string;
+    l_Name : string;
     DOB : Date;
     gender : string;
     mob : string;
@@ -27,9 +27,7 @@ export class PersonalDetails{
     car_model : string;
     Ex_showroom_price : string;
     onroad_price : string;
-    photo:any;
-    aadhar_card:any;
-    pan_card:any;
-    salary_slip:any;
+    Approval_status : any;
+    application_status : string;
     
 }

@@ -20,9 +20,9 @@
     /* align-items: center; */
     /* justify-content: center; */
     border-style: ridge;
-    border-color: rgb(53, 163, 58);
+    border-color:black;
     padding: 3%;
-    background-color: lightgreen;
+    background-color: lightskyblue;
     color: black;
 }
 .formDiv2{
@@ -32,9 +32,9 @@
     /* align-items: center; */
     /* justify-content: center; */
     border-style: ridge;
-    border-color: rgb(53, 163, 58);
+    border-color: black;
     padding: 3%;
-    background-color: lightgreen;
+    background-color:lightskyblue;
     color: black black;
 }
 .formDiv3{
@@ -46,7 +46,7 @@
     border-style: ridge;
     border-color: rgb(53, 163, 58);
     padding: 3%;
-    background-color: lightgreen;
+    background-color:lightskyblue;
     color: black;
 }
 .formDiv4{
@@ -56,9 +56,9 @@
     /* align-items: center; */
     /* justify-content: center; */
     border-style: ridge;
-    border-color: rgb(53, 163, 58);
+    border-color: black;
     padding: 3%;
-    background-color: lightgreen;
+    background-color: lightskyblue;
     color: black;
 }
 .formDiv5{
@@ -68,8 +68,8 @@
     /* align-items: center; */
     /* justify-content: center; */
     border-style: ridge;
-    border-color: rgb(53, 163, 58);
+    border-color:black;
     padding: 3%;
-    background-color: lightgreen;
+    background-color: lightskyblue;
     color: black;
 }

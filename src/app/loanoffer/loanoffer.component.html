@@ -1,20 +1,16 @@
-<p>
-    loanoffer works!
-  </p>
-  <div  >
+<div  >
    
     <table align="center" >
-      <tr> <h3>Loan Ammount</h3></tr>
+      <tr> <h3>Loan Amount</h3></tr>
       <tr>
-        <select #myselect1 (change)="loanamt(myselect1.value)">
-          <option disabled selected value="">--Select Loan Ammount--</option>
+        <select #myselect1 (change)="loanamt(myselect1.value)" [(ngModel)]="maxloanamt">
         <option  *ngFor="let l of loan" [value]="l"  >{{l}}</option>
           </select>
         </tr>  
     <tr><h3>Loan Tenure</h3></tr>
   <tr>
-    <select (change)="loantenure(myselect.value)"  #myselect >
-      <option disabled selected value="">--select Loan Tenure--</option>
+    <select #myselect (change)="loantenure(myselect.value)"  [(ngModel)]="months"  >
+      <option [value]="months" selected="selected">{{months}}</option>
       <option  *ngFor="let e of EmiMonths" [value]="e" >{{e}}</option>
         </select>
       </tr>
@@ -27,7 +23,7 @@
    <table style="width:100%">
      <tr>
        <th>
-         Loan Ammount
+         Loan Amount
        </th>
        <th>
          Best Rate
@@ -39,21 +35,21 @@
          Processing Fee
        </th>
        <th>
-         <Button class="btn btn-info" (click)="ApplyLoan()">Aplly Loan</Button>
+         <Button class="btn btn-info" (click)="ApplyLoan()">Apply Loan</Button>
        </th>
      </tr>
      <tr>
        <td>
-         {{current_loanamt}}
+         Rs.{{current_loanamt}}
        </td>
        <td>
-         {{current_intrest}}
+         {{current_intrest}}%
        </td>
        <td>
-         {{current_loanemi}}
+         Rs.{{current_loanemi}}
        </td>
        <td>
-         {{current_processingfee}}
+         Rs.{{current_processingfee}}
          
        </td>
        <td>

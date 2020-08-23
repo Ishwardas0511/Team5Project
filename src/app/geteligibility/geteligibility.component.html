@@ -1,3 +1,4 @@
+<button (click)="logout()" style="position: fixed;left: 1150px;top: 16px;" class="btn btn-dark">LogOut</button>
 
 <div class="mainDiv"  onload="resetSelection()">
     <h1>Check Your Eligibility for Vehicle Loan</h1>
@@ -27,28 +28,31 @@
         <h1>Vehicle Details</h1>
         <br/>
             <label for=""><strong>Car Make*</strong></label>
-            <!-- <input type="text" class="form-control" [(ngModel)]="vdetails.car_make" required #car_make=ngModel/>
-            <p class="alert alert-danger" *ngIf="car_make.touched && car_make.invalid">
-                <span class="alert alert-danger" *ngIf="car_make.errors.required">Car Make is required</span>
-            </p> -->
-            <select [(ngModel)]="selectedBrand.id" (change)="onSelect($event.target.value)">
+            
+          
+            <select  (change)="onSelect($event.target.value)" class="form-control" >
                 <option value="0" disabled selected value="">--Select--</option>
                 <option *ngFor="let brand of brands" value= {{brand.id}}>{{brand.name}}</option>
               </select>
+              <!-- <p class="alert alert-danger" *ngIf="car_make.touched && car_make.invalid">
+                <span class="alert alert-danger" *ngIf="car_make.errors.required">Car Make is required</span>
+            </p> -->
             <br/>
             <label for=""><strong>Car Model*</strong></label>
-            <!-- <input type="text" class="form-control" [(ngModel)]="vdetails.car_model" required #car_model=ngModel/>
-            <p class="alert alert-danger" *ngIf="car_model.touched && car_model.invalid">
-                <span class="alert alert-danger" *ngIf="car_model.errors.required">Car Model is required</span>
-            </p> -->
-            <select>
-                <option *ngFor="let model of models " value= {{model.id}}>{{model.name}}</option>
+            
+            
+            <select [(ngModel)]="vdetails.car_model"  required #car_model=ngModel class="form-control" >
+                <option value="0" disabled selected value="">--Select--</option>
+                <option *ngFor="let model of models " value= {{model.name}}>{{model.name}}</option>
               </select>
-  
+              <p class="alert alert-danger" *ngIf="car_model.touched && car_model.invalid">
+                <span class="alert alert-danger" *ngIf="car_model.errors.required">Car Model is required</span>
+            </p> 
+
             <label for=""><strong>Ex Showroom Price*</strong></label>
             <input type="text" class="form-control" [(ngModel)]="vdetails.Ex_showroom_price" required #Ex_showroom_price=ngModel/>
             <p class="alert alert-danger" *ngIf="Ex_showroom_price.touched && Ex_showroom_price.invalid">
-                <span class="alert alert-danger" *ngIf="Ex_showroom_price.errors.required">Car Model is required</span>
+                <span class="alert alert-danger" *ngIf="Ex_showroom_price.errors.required">Ex-Showroom Price is required</span>
             </p>
             <br/>
             <label for=""><strong>On Road Price*</strong></label>
@@ -101,7 +105,7 @@
     </ng-template>
 
 </div>
-<div style="background-color: lightblue;color:darkblue;"class="footer" >
-    <p>Author: Govind Dammani, Ishwar Das, Kunal Goel, Manjari Kushwaha</p>
-    <p>© Copyright 2020 Bonanza Company . All rights reserved.</p>
-  </div>
+
+ <div *ngIf="error==400" style="color: red;text-align:center;position: relative;top:1px;" >
+Please fill required(*) fields
+ </div>

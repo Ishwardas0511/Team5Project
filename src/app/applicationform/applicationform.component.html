@@ -1,3 +1,6 @@
+<button (click)="logout()" style="position: fixed;left: 1150px;top: 16px;" class="btn btn-dark">LogOut</button>
+
+
 <div class="mainDiv">
     <h1>Welcome to Application Form for Vehicle Loan</h1>
     <br/>
@@ -15,7 +18,7 @@
             <br/>
 
             <label for=""><strong>Last Name*</strong></label>
-            <input type="text" class="form-control" [(ngModel)]="details.l_name" required #l_name=ngModel/>
+            <input type="text" class="form-control" [(ngModel)]="details.l_Name" required #l_name=ngModel/>
             <p class="alert alert-danger" *ngIf="l_name.touched && l_name.invalid">
                 <span class="alert alert-danger" *ngIf="l_name.errors.required">Last Name cannot be empty</span>
             </p>
@@ -52,16 +55,19 @@
             <br/>
 
             <label for=""><strong>Mobile*</strong></label>
-            <input type="text" class="form-control" [(ngModel)]="details.mob" required #mob=ngModel/>
+            <input type="text" class="form-control" [(ngModel)]="details.mob" required minlength="10" maxlength="10" #mob=ngModel/>
             <p class="alert alert-danger" *ngIf="mob.touched && mob.invalid">
                 <span class="alert alert-danger" *ngIf="mob.errors.required">Mobile Number cannot be empty</span>
+                <span class="alert alert-danger" *ngIf="mob.errors.minlength">Mobile Number should have 10 digits</span>
+                <span class="alert alert-danger" *ngIf="mob.errors.maxlength">Mobile Number should have 10 digits</span>
             </p>
             <br/>
 
             <label for=""><strong>Email*</strong></label> 
-            <input type="email" class="form-control" [(ngModel)]="details.email" required #email=ngModel/>
+            <input type="email" class="form-control" [(ngModel)]="details.email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email=ngModel/>
             <p class="alert alert-danger" *ngIf="email.touched && email.invalid">
                 <span class="alert alert-danger" *ngIf="email.errors.required">Email cannot be empty</span>
+                <span class="alert alert-danger" *ngIf="email.errors.pattern">Invalid Email</span>
             </p>
             <br/>
 
@@ -77,17 +83,23 @@
             <br/>
 
             <label for=""><strong>State*</strong></label>
-            <input type="text" class="form-control" [(ngModel)]="details.res_state" required #res_state=ngModel/>
-            <p class="alert alert-danger" *ngIf="res_state.touched && res_state.invalid">
+            <select class="form-control" [(ngModel)]="selectedState.id" (change)="onSelect($event.target.value)">
+                <option value="0">--Select--</option>
+                <option *ngFor="let state of states" value= {{state.id}}>{{state.name}}</option>
+              </select>
+            <!-- <p class="alert alert-danger" *ngIf="res_state.touched && res_state.invalid">
                 <span class="alert alert-danger" *ngIf="res_state.errors.required">Resident State cannot be empty</span>
-            </p>
+            </p> -->
             <br/>
 
             <label for=""><strong>City*</strong></label>
-            <input type="text" class="form-control" [(ngModel)]="details.city" required #city=ngModel/>
-            <p class="alert alert-danger" *ngIf="city.touched && city.invalid">
+            <select class="form-control" [(ngModel)]="details.city">
+                <option value="0">--Select--</option>
+                <option *ngFor="let district of districts " value= {{district.name}}>{{district.name}}</option>
+              </select>
+            <!-- <p class="alert alert-danger" *ngIf="city.touched && city.invalid">
                 <span class="alert alert-danger" *ngIf="city.errors.required">City cannot be empty</span>
-            </p>
+            </p> -->
             <br/>
 
             <label for=""><strong>Pin Code*</strong></label>
@@ -174,30 +186,46 @@
         <input type="text" class="form-control" [(ngModel)]="ldetails.loan_intrest" required #loan_intrest=ngModel/>
         <p class="alert alert-danger" *ngIf="loan_intrest.touched && loan_intrest.invalid">
         <span class="alert alert-danger" *ngIf="loan_intrest.errors.required">Loan Interest is required</span>
-        </p>
+        (ngSubmit)="OnSubmit(Photo,Aadhar,Pan,Slips)
+    </p>
         <br/>    
     </div> -->
-    <!-- <div class="formDiv5">
-        <h1>Identity Details</h1>
-        <br/>
-        <label><strong>Upload Photo</strong></label>
-        <input type="file" [(ngModel)]="dupload.photo" #photo=ngModel/>
-        <br/>
-        <label><strong>Upload Aadhar Card</strong></label>
-        <input type="file" [(ngModel)]="dupload.aadhar_card" #aadhar_card=ngModel/>
-        <br/>
-        <label><strong>Upload PAN Card</strong></label>
-        <input type="file" [(ngModel)]="dupload.pan_card" #pan_card=ngModel/>
-        <br/>
-        <label><strong>Upload Last 6 months salary slips</strong></label>
-        <input type="file" [(ngModel)]="dupload.salary_slip" #salary_slip=ngModel/>
-
-        <br/>
-        <br/>
-        <button class="btn btn-info" (click)="UserDetail()"><strong>Submit Application</strong></button>
+    <div class="formDiv5">
+        <form name="form" #form="ngForm" (ngSubmit)="OnSubmit(Photo,Aadhar,Pan,Slips)"  >
+            <div>
+                <h1>Identity Details</h1>
+                <br/>
+                <label><strong>Upload Photo (Image)</strong></label>
+                <br/>
+                <img [src]="imageUrl1" style="width: 300px;height: 200px;">
+                <br/>
+                <input type="file" accept="image/*" #Photo id="myPhoto" (change)="handlePhoto($event.target.files)"/>
+                <br/><br/>
+                <label><strong>Upload Aadhar Card (Image)</strong></label>
+                <br/>
+                <img [src]="imageUrl2" style="width: 300px;height: 200px;">
+                <br/>
+                <input type="file" accept="image/*" #Aadhar id="myAadhar" (change)="handleAadhar($event.target.files)"/>
+                <br/><br/>
+                <label><strong>Upload PAN Card (Image)</strong></label>
+                <br/>
+                <img [src]="imageUrl3" style="width: 300px;height: 200px;">
+                <br/>
+                <input type="file" accept="image/*" #Pan id="myPan" (change)="handlePan($event.target.files)"/>
+                <br/><br/>
+                <label><strong>Upload Last 6 months salary slips (Image)</strong></label>
+                <br/>
+                <img [src]="imageUrl4" style="width: 300px;height: 200px;">
+                <br/>
+                <input type="file" accept="image/*" #Slips id="mySlips" (change)="handleSlips($event.target.files)"/>
+        
+                <br/>
+                <br/>
+                <button class="btn btn-info" (click)="UserDetail()"><strong>Submit Application</strong></button>
+            </div>
+        </form>
     </div>
-</div> -->
-<button class="btn btn-info" (click)="UserDetail()"><strong>Submit Application</strong></button>
-<p>
-    {{result}}
-</p>
+
+</div>
+
+

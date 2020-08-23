@@ -1,8 +1,11 @@
 .active {
-    color:black;
+    color:white;
   }
   h1 {text-align: center;
-      font-family:cursive;
+      font-family:'Times New Roman', Times, serif;
       font-size: 100px;
-      color: royalblue;
+      color: black;
+  }
+  .container{
+      color: white;
   }

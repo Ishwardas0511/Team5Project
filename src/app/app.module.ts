@@ -23,7 +23,20 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import{SelectService} from './services/selectservice';
 import { HomeComponent } from './home/home.component';
+import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { TermsandconditionComponent } from './termsandcondition/termsandcondition.component';
+import { AfterloginComponent } from './afterlogin/afterlogin.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { ShowclientsComponent } from './showclients/showclients.component';
+import { PendingapplicationComponent } from './pendingapplication/pendingapplication.component';
+import { RejectedapplicationComponent } from './rejectedapplication/rejectedapplication.component';
+import { FinashowclientdetailsComponent } from './finashowclientdetails/finashowclientdetails.component';
+import { FinalpendingclientdetailsComponent } from './finalpendingclientdetails/finalpendingclientdetails.component';
+import { FinalrejectedclientdetailsComponent } from './finalrejectedclientdetails/finalrejectedclientdetails.component';
+import { FinalpageComponent } from './finalpage/finalpage.component';
+import { ForgotComponent } from './forgot/forgot.component';
 var myRoutes:Routes=[{path:"login",component:LoginComponent},
+{path:"app",component: AppComponent},
 {path:"register",component:RegisterComponent},
 {path:"emi",component:EmiComponent},
 {path:"adminlogin",component:AminloginComponent},
@@ -33,7 +46,19 @@ var myRoutes:Routes=[{path:"login",component:LoginComponent},
 {path:"aboutus",component:AboutusComponent},
 {path:"contactus",component:ContactusComponent},
 {path:"Home",component:HomeComponent},
-// {path:'**',component:HomepageComponent}
+{path:"userdashboard",component:UserdashboardComponent},
+{path:"homepage",component:HomepageComponent},
+{path:'clients',component:ShowclientsComponent},
+{path:'pendingUser',component:PendingapplicationComponent},
+{path:'rejectedUser',component:RejectedapplicationComponent},
+{path:"termsncondition",component:TermsandconditionComponent},
+{path:"admindash",component:AdmindashboardComponent},
+{path:'finaldetails',component:FinashowclientdetailsComponent},
+{path:'finalpendingdetails',component:FinalpendingclientdetailsComponent},
+{path:'finalrejecteddetails',component:FinalrejectedclientdetailsComponent},
+{path:"finalpage",component:FinalpageComponent},
+{path:"forgot",component:ForgotComponent},
+{path:'**',component:HomepageComponent}
 ]
 @NgModule({
   declarations: [
@@ -49,6 +74,18 @@ var myRoutes:Routes=[{path:"login",component:LoginComponent},
     AboutusComponent,
     ContactusComponent,
     HomeComponent,
+    UserdashboardComponent,
+    TermsandconditionComponent,
+    AfterloginComponent,
+    AdmindashboardComponent,
+    ShowclientsComponent,
+    PendingapplicationComponent,
+    RejectedapplicationComponent,
+    FinashowclientdetailsComponent,
+    FinalpendingclientdetailsComponent,
+    FinalrejectedclientdetailsComponent,
+    FinalpageComponent,
+    ForgotComponent,
     
   ],
   imports: [
